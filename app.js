@@ -3,7 +3,7 @@ fetch("http://127.0.0.1:3002/db.json")
     return response.json();
   })
   .then(function(reportdata) {
-    print(reportdata[0].component);
+    print(reportdata[1].component);
   });
 
 function print(reportdata) {
@@ -12,6 +12,22 @@ function print(reportdata) {
       { text: "Checklist Items:", style: "header" },
       {
         ul: checklists(reportdata.checklistItems)
+      },
+      { text: "Guidance :", style: "header" },
+      { text: reportdata.guidance },
+      { text: "Report Text :", style: "header" },
+      { text: reportdata.reporttext },
+      { text: "Findings/Deficiencies :", style: "header" },
+      { text: reportdata.findings },
+      {
+        columns: [
+          { text: "Status :", width: "32%" },
+          { text: "Responsibility :", width: "32%" },
+          [
+            { text: `Due Date : ${reportData.duedate}` },
+            { text: `Closing Date : ${reportData.closingdate}` }
+          ]
+        ]
       }
     ],
     styles: {
@@ -26,8 +42,6 @@ function print(reportdata) {
 }
 
 function checklists(data) {
-  console.log(data);
-
   return data.map(item => {
     return {
       columns: [
