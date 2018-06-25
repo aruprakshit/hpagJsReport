@@ -6,6 +6,20 @@ fetch("http://127.0.0.1:3002/db.json")
     print(reportdata);
   });
 
+
+const headerText = (reportdata) => () => {
+    return [{
+      image: reportdata.companyLogo,
+      fit: [50, 50],
+      alignment: "right",
+      margin: [5, 5]
+    },
+    {
+      canvas: [{ type: 'line', x1: 10, y1: 10, x2: 595-10, y2: 10, lineWidth: 1 }]
+    }
+  ];
+}
+  
 const footerText = reportdata => (page, pages) => {
   return {
     margin: [40, 0, 0, 0],
@@ -43,6 +57,7 @@ const footerText = reportdata => (page, pages) => {
 };
 function print(reportData) {
   const docDefinition = {
+    pageMargins: [60, 80, 60, 60],
     header: headerText(reportData),
     footer: footerText(reportData),
     content: [...componentsBody(reportData.components)],
@@ -195,13 +210,4 @@ function findings(component) {
     { text: "Findings/Deficiencies :", style: "headerTwo" },
     { text: component.findings, style: ["global"], margin: [0, 0, 0, 5] }
   ];
-}
-
-function headerText(reportdata) {
-  return {
-    image: reportdata.companyLogo,
-    fit: [50, 50],
-    alignment: "right",
-    margin: [0, 5, 5, 0]
-  };
 }
