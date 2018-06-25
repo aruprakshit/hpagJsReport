@@ -1,0 +1,74 @@
+[
+  {
+    "component": {
+      "name": "1. ism/isps/qem - general observations",
+      "findings": "non conformity: bridge standing order for ecdis is misleading and not properly understood by oows.\n\nrecommended corrective measures: standing order to be revised and discussed with oows.",
+      "guidance": "",
+      "reporttext": "sms, security system, ohsas and qem-system of hapag-lloyd are well implemented. procedures are continuously observed and maintained by shipboard management and crew. on-signing crewmember have been familiarised, respective familiarisation-documents have been controlled by auditor. the ssa and ssp have been reviewed and found to be adequate.\n\nduring the internal audit below non-conformities/ observations related to the sms/sec-system/qems has/have been noticed, see 'results of internal audit' enclosed. listed corrective measures/improvements have to be implemented, reported and confirmed within the given time-period. the implementation of corrective actions based on results of previous audits has been verified.",
+      "checklistItems": [
+        {
+          "name": "Designated Person",
+          "value": "No"
+        },
+        { "name": "Master", "value": "Yes" }
+      ],
+      "responsibility": "to be rectified by crew",
+      "status": "",
+      "duedate": "",
+      "closingdate": "",
+      "attachments": [
+        {
+          "name": "img_0164.jpg", "url": "https://inspection.dockingpro.com/aws-assets/inspector_tool/attachment/86529964-6e9b-4bfa-ba9e-62bd24eaa954/file/fe402e0f-6522-4f1d-b29d-a6f600671330/report_size_img_0164.jpg"
+        },
+        { "name": "img_0162.jpg", "url": "https://inspection.dockingpro.com/aws-assets/inspector_tool/attachment/86529964-6e9b-4bfa-ba9e-62bd24eaa954/file/37570fe2-745f-45da-8e28-1af09d826921/report_size_img_0162.jpg" },
+        { "name": "img_0163.jpg", "url": "https://inspection.dockingpro.com/aws-assets/inspector_tool/attachment/86529964-6e9b-4bfa-ba9e-62bd24eaa954/file/31c54c96-217f-4907-8467-4d63de653b34/report_size_img_0163.jpg" }
+      ],
+      "closinginformation": [
+        {
+          "comment": "lorem ipsum is simply dummy text of the printing and typesetting industry.",
+          "author": "patrick detlefsen",
+          "date": "22/07/2018"
+        },
+        {
+          "comment": "lorem ipsum is simply dummy text of the printing and typesetting industry.",
+          "author": "marian theisen",
+          "date": "22/07/2018"
+        }
+      ]
+    }
+  },
+  {
+    "component": {
+      "name": "2. ism/isps/qem - results of internal audit",
+      "findings": "",
+      "guidance": "safety management system (sms), security system according to isps, occupational health and safety system (ohsas) acc. to german law and quality and environmental management (qem) -system according to iso 9001/14001 hapag-lloyd",
+      "reporttext": "",
+      "checklistItems": [],
+      "responsibility": "none",
+      "status": "serviceable condition must be improved. proper function may be jeopardized.",
+      "duedate": "20/07/2018",
+      "closingdate": "22/07/2018",
+      "attachments": [
+        {
+          "name": "img_0164.jpg",
+          "url": "https://inspection.dockingpro.com/aws-assets/inspector_tool/attachment/86529964-6e9b-4bfa-ba9e-62bd24eaa954/file/fe402e0f-6522-4f1d-b29d-a6f600671330/report_size_img_0164.jpg"
+        },
+        {
+          "name": "img_0162.jpg",
+          "url": "https://inspection.dockingpro.com/aws-assets/inspector_tool/attachment/86529964-6e9b-4bfa-ba9e-62bd24eaa954/file/37570fe2-745f-45da-8e28-1af09d826921/report_size_img_0162.jpg"
+        },
+        {
+          "name": "img_0163.jpg",
+          "url": "https://inspection.dockingpro.com/aws-assets/inspector_tool/attachment/86529964-6e9b-4bfa-ba9e-62bd24eaa954/file/31c54c96-217f-4907-8467-4d63de653b34/report_size_img_0163.jpg"
+        }
+      ],
+      "closinginformation": [
+        {
+          "comment": "lorem ipsum is simply dummy text of the printing and typesetting industry.",
+          "author": "marian theisen",
+          "date": "22/07/2018"
+        }
+      ]
+    }
+  }
+]
