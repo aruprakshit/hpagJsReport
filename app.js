@@ -6,9 +6,46 @@ fetch("http://127.0.0.1:3002/db.json")
     print(reportdata);
   });
 
+const footerText = reportdata => (page, pages) => {
+  return {
+    margin: [40, 0, 0, 0],
+    height: 200,
+    columns: [
+      {
+        alignment: "left",
+        columns: [
+          { text: "Inspector: ", width: 80 },
+          { text: reportdata.inspector, width: "auto" }
+        ],
+        columns: [
+          { text: "Survey Type: ", width: 80 },
+          { text: reportdata.surveyType, width: "auto" }
+        ],
+        columns: [
+          { text: "Start Date: ", width: 80 },
+          { text: reportdata.startDate, width: "auto" }
+        ],
+        columns: [
+          { text: "Vessel: ", width: 80 },
+          { text: reportdata.vessel, width: "auto" }
+        ]
+      },
+      {
+        alignment: "right",
+        text: [
+          { text: page.toString(), italics: true },
+          " of ",
+          { text: pages.toString(), italics: true }
+        ]
+      }
+    ]
+  };
+};
 function print(reportData) {
   const docDefinition = {
-    content: [...componentsBody(reportData)],
+    header: headerText(reportData),
+    footer: footerText(reportData),
+    content: [...componentsBody(reportData.components)],
     styles: {
       headerOne: {
         fontsize: 14,
@@ -48,12 +85,9 @@ function componentsBody(components) {
     {
       ul: checklists(component.checklistItems)
     },
-    { text: "Guidance :", style: "headerTwo" },
-    { text: component.guidance, style: ["global"], margin: [0, 0, 0, 5] },
-    { text: "Report Text :", style: "headerTwo" },
-    { text: component.reporttext, style: ["global"], margin: [0, 0, 0, 5] },
-    { text: "Findings/Deficiencies :", style: "headerTwo" },
-    { text: component.findings, style: ["global"], margin: [0, 0, 0, 5] },
+    ...guidance(component),
+    ...reportText(component),
+    ...findings(component),
     {
       columns: [
         [
@@ -80,14 +114,14 @@ function componentsBody(components) {
         ]
       ]
     },
-    { text: "Attachments :", style: "headerTwo"},
+    { text: "Attachments :", style: "headerTwo" },
     {
       columns: [
         [
           {
             image: component.attachments[0].url,
             width: 150,
-            style: 'image'
+            style: "image"
           },
           {
             columns: [
@@ -104,7 +138,7 @@ function componentsBody(components) {
           {
             image: component.attachments[1].url,
             width: 150,
-            style: 'image'
+            style: "image"
           },
           {
             columns: [
@@ -121,7 +155,7 @@ function componentsBody(components) {
           {
             image: component.attachments[2].url,
             width: 150,
-            style: 'image'
+            style: "image"
           },
           {
             columns: [
@@ -137,4 +171,37 @@ function componentsBody(components) {
       ]
     }
   ]);
+}
+
+function guidance(component) {
+  if (component.guidance.length === 0) return [];
+  return [
+    { text: "Guidance :", style: "headerTwo" },
+    { text: component.guidance, style: ["global"], margin: [0, 0, 0, 5] }
+  ];
+}
+
+function reportText(component) {
+  if (component.reportText.length === 0) return [];
+  return [
+    { text: "Report Text :", style: "headerTwo" },
+    { text: component.reportText, style: ["global"], margin: [0, 0, 0, 5] }
+  ];
+}
+
+function findings(component) {
+  if (component.findings.length === 0) return [];
+  return [
+    { text: "Findings/Deficiencies :", style: "headerTwo" },
+    { text: component.findings, style: ["global"], margin: [0, 0, 0, 5] }
+  ];
+}
+
+function headerText(reportdata) {
+  return {
+    image: reportdata.companyLogo,
+    fit: [50, 50],
+    alignment: "right",
+    margin: [0, 5, 5, 0]
+  };
 }
