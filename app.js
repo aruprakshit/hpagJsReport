@@ -6,58 +6,76 @@ fetch("http://127.0.0.1:3002/db.json")
     print(reportdata);
   });
 
-
-const headerText = (reportdata) => () => {
-    return [{
+const headerText = reportdata => () => {
+  return [
+    {
       image: reportdata.companyLogo,
       fit: [50, 50],
       alignment: "right",
       margin: [5, 5]
     },
     {
-      canvas: [{ type: 'line', x1: 10, y1: 10, x2: 595-10, y2: 10, lineWidth: 1 }]
+      canvas: [
+        { type: "line", x1: 10, y1: 10, x2: 595 - 10, y2: 10, lineWidth: 1 }
+      ]
     }
   ];
-}
-  
-const footerText = reportdata => (page, pages) => {
-  return {
-    margin: [40, 0, 0, 0],
-    height: 200,
-    columns: [
-      {
-        alignment: "left",
-        columns: [
-          { text: "Inspector: ", width: 80 },
-          { text: reportdata.inspector, width: "auto" }
-        ],
-        columns: [
-          { text: "Survey Type: ", width: 80 },
-          { text: reportdata.surveyType, width: "auto" }
-        ],
-        columns: [
-          { text: "Start Date: ", width: 80 },
-          { text: reportdata.startDate, width: "auto" }
-        ],
-        columns: [
-          { text: "Vessel: ", width: 80 },
-          { text: reportdata.vessel, width: "auto" }
-        ]
-      },
-      {
-        alignment: "right",
-        text: [
-          { text: page.toString(), italics: true },
-          " of ",
-          { text: pages.toString(), italics: true }
-        ]
-      }
-    ]
-  };
 };
+
+const footerText = reportdata => (page, pages) => {
+  return [
+    {
+      canvas: [
+        { type: "line", x1: 10, y1: 10, x2: 595 - 10, y2: 10, lineWidth: 1 }
+      ],
+      margin: [0, 0, 0, 2]
+    },
+    {
+      margin: [20, 0, 0, 20],
+      columns: [
+        [
+          {
+            columns: [
+              { text: "Inspector: ", width: "auto" },
+              { text: reportdata.inspector, width: "auto" }
+            ]
+          },
+          {
+            columns: [
+              { text: "Survey Type: ", width: "auto" },
+              { text: reportdata.surveyType, width: "auto" }
+            ]
+          },
+          {
+            columns: [
+              { text: "Start Date: ", width: "auto" },
+              { text: reportdata.startDate, width: "auto" }
+            ]
+          },
+          {
+            columns: [
+              { text: "Vessel: ", width: "auto" },
+              { text: reportdata.vessel, width: "auto" }
+            ]
+          }
+        ],
+        {
+          alignment: "right",
+          margin: [0, 40, 15, 0],
+          text: [
+            { text: page.toString(), bold: true },
+            " of ",
+            { text: pages.toString(), bold: true }
+          ]
+        }
+      ]
+    }
+  ];
+};
+
 function print(reportData) {
   const docDefinition = {
-    pageMargins: [60, 80, 60, 60],
+    pageMargins: [60, 60, 60, 80],
     header: headerText(reportData),
     footer: footerText(reportData),
     content: [...componentsBody(reportData.components)],
