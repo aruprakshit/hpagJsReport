@@ -6,19 +6,20 @@ fetch("http://127.0.0.1:3002/db.json")
     print(reportdata[1].component);
   });
 
-function print(reportdata) {
+function print(reportData) {
   const docDefinition = {
     content: [
+      { text: reportData.name },
       { text: "Checklist Items:", style: "header" },
       {
-        ul: checklists(reportdata.checklistItems)
+        ul: checklists(reportData.checklistItems)
       },
       { text: "Guidance :", style: "header" },
-      { text: reportdata.guidance },
+      { text: reportData.guidance },
       { text: "Report Text :", style: "header" },
-      { text: reportdata.reporttext },
+      { text: reportData.reporttext },
       { text: "Findings/Deficiencies :", style: "header" },
-      { text: reportdata.findings },
+      { text: reportData.findings },
       {
         columns: [
           { text: "Status :", width: "32%" },
@@ -26,6 +27,59 @@ function print(reportdata) {
           [
             { text: `Due Date : ${reportData.duedate}` },
             { text: `Closing Date : ${reportData.closingdate}` }
+          ]
+        ]
+      },
+      { text: "Attachments :" },
+      {
+        columns: [
+          [
+            {
+              image: reportData.attachments[0].url,
+              width: 150
+            },
+            {
+              columns: [
+                reportData.attachments[0].name,
+                {
+                  text: "View >>",
+                  link: reportData.attachments[0].url,
+                  decoration: "underline"
+                }
+              ]
+            }
+          ],
+          [
+            {
+              image: reportData.attachments[1].url,
+              width: 150
+            },
+            {
+              columns: [
+                reportData.attachments[1].name,
+                {
+                  text: "View >>",
+                  link: reportData.attachments[1].url,
+                  decoration: "underline"
+                }
+              ]
+            }
+          ],
+          [
+            {
+              image: reportData.attachments[2].url,
+              width: 150
+            },
+            {
+              columns: [
+                reportData.attachments[2].name,
+                {
+                  text: "View >>",
+                  link: reportData.attachments[2].url,
+                  decoration: "underline"
+                }
+              ]
+            }
           ]
         ]
       }
